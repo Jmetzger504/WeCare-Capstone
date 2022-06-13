@@ -1,1 +1,11 @@
-.CoachLogin {}
+img {
+    max-width: 150px;
+}
+
+h3 {
+    display: inline;
+}
+
+Button {
+    width: 100%;
+}

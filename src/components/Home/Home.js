@@ -41,8 +41,8 @@ function Home() {
       <Container>
         <Row>
           <Col>
-            <Card bg = "dark" className="mt-5" text = "light" style = {{width: '20rem'}}>
-              <Card.Img className="m-1" style = {styles.Img} variant="top" src="assets\Images\LifeCoachLogIn.jpg" />
+            <Card bg = "dark" className="mt-5 myCard" text = "light" style = {{width: '25rem'}}>
+              <Card.Img className="m-1" variant="top" src="assets\Images\LifeCoachLogIn.jpg" />
               <Card.Body>
                 <Button variant = "primary" onClick = {handleCoachLoginClick}>Login as a Coach</Button><br/>
                 <Button variant="primary" onClick = {handleCoachRegisterClick}>Register as a Coach</Button>
@@ -50,8 +50,8 @@ function Home() {
             </Card>
           </Col>
           <Col>
-          <Card bg = "dark" className="mt-5 ms-auto" text = "light" style = {{width: '20rem'}}>
-            <Card.Img className = "m-1" style = {styles.Img} variant="top" src="assets\Images\UserLogin.jpg" />
+          <Card bg = "dark" className="mt-5 ms-auto" text = "light" style = {{width: '25rem'}}>
+            <Card.Img className = "m-1" variant="top" src="assets\Images\UserLogin.jpg" />
             <Card.Body>
               <Button variant = "primary" onClick = {handleUserLoginClick}>Login</Button><br/>
               <Button variant="primary" onClick = {handleUserRegisterClick}>Register</Button>
