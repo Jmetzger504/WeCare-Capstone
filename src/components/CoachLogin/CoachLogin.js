@@ -25,7 +25,7 @@ const CoachLogin = () => (
         </Form.Group>
         <Form.Group>
           <Col sm = {12}>
-            <Button size= "lg" className="mt-4 ms-auto" variant="primary" type="submit"> Sign in </Button>
+            <Button size= "lg" className="mt-4 ms-4" variant="primary" type="submit"> Sign in </Button>
           </Col>
         </Form.Group>
       </Form>
