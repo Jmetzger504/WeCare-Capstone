@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './Home.module.css';
+import './Home.css';
 import Navigation from '../Navigation/Navigation'
 import { useEffect } from 'react';
 import {Button,Card} from 'react-bootstrap';
@@ -36,7 +36,7 @@ function Home() {
   
 
   return(
-    <>
+    <div className = 'Home'>
       <Navigation/>
       <Container>
         <Row>
@@ -44,8 +44,8 @@ function Home() {
             <Card bg = "dark" className="mt-5" text = "light" style = {{'width': '25rem', 'border-radius': '2.5%'}}>
               <Card.Img className="col-lg-5 offset-4 mt-2" variant="top" src="assets\Images\LifeCoachLogIn.jpg" />
               <Card.Body>
-                <Button style = {styles.Button} variant = "primary" onClick = {handleCoachLoginClick}>Login as a Coach</Button><br/>
-                <Button style = {styles.Button} variant="primary" onClick = {handleCoachRegisterClick}>Register as a Coach</Button>
+                <Button  variant = "primary" onClick = {handleCoachLoginClick}>Login as a Coach</Button><br/>
+                <Button  variant="primary" onClick = {handleCoachRegisterClick}>Register as a Coach</Button>
               </Card.Body>
             </Card>
           </Col>
@@ -53,17 +53,14 @@ function Home() {
           <Card bg = "dark" className="mt-5 ms-auto" text = "light" style = {{'width': '25rem', 'border-radius': '2.5%'}}>
             <Card.Img className = "col-lg-5 offset-4 mt-2" variant="top" src="assets\Images\UserLogin.jpg" />
             <Card.Body>
-              <Button style = {styles.Button} variant = "primary" onClick = {handleUserLoginClick}>Login</Button><br/>
-              <Button style = {styles.Button} variant="primary" onClick = {handleUserRegisterClick}>Register</Button>
+              <Button variant = "primary" onClick = {handleUserLoginClick}>Login</Button><br/>
+              <Button variant="primary" onClick = {handleUserRegisterClick}>Register</Button>
             </Card.Body>
           </Card>
           </Col>
         </Row>
-        
-          
-        
       </Container>
-  </>
+  </div>
   );
 }
 

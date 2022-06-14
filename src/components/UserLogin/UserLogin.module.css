@@ -1,1 +1,11 @@
-.UserLogin {}
+img {
+    max-width: 150px;
+}
+
+h1 {
+    display: inline;
+}
+
+Button {
+    width: 100%;
+}
