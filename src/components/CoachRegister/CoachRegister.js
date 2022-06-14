@@ -5,14 +5,12 @@ import {Form,Button,Col,Row} from "react-bootstrap"
 import styles from './CoachRegister.module.css';
 
 function CoachRegister() { 
-  let styles = '';
   return (
     <>
       <Navigation/>
-      
       <div className = "container p-5 mt-5 bg-dark text-white" style = {{"width": "45%", "border-radius": "2.5%"}}>
-        <img style = {styles.img} src = "assets\Images\LifeCoachLogIn.jpg"></img>
-        <h1 style = {styles.h1}>Life Coach Profile</h1>
+        <img src = "assets\Images\LifeCoachLogIn.jpg"></img>
+        <h1>Life Coach Profile</h1>
         <Form horizontal="true" className = "mt-3">
           <Row>
             <Col>
@@ -59,7 +57,7 @@ function CoachRegister() {
           </Row>
           <Row>
               <Form.Group className = "mb-3">
-                <Button style = {styles.coachRegButton} type = "submit">Register</Button>
+                <Button type = "submit">Register</Button>
               </Form.Group>
             </Row>
         </Form>
