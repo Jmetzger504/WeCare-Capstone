@@ -4,14 +4,14 @@ import styles from './CoachLogin.module.css';
 import Container from 'react-bootstrap/esm/Container';
 import Navigation from '../Navigation/Navigation';
 import {Form,Button,Col} from "react-bootstrap"
-import './CoachLogin.module.css'
+
 
 const CoachLogin = () => (
   <>
     <Navigation/>
     <div className = "container p-3 mt-5 bg-dark text-white" style = {{"width": "30%", "border-radius": "2.5%"}}>
-      <img src = "assets\Images\LifeCoachLogIn.jpg"></img>
-      <h3>Login As Life Coach</h3>
+      <img style = {styles.img} src = "assets\Images\LifeCoachLogIn.jpg"></img>
+      <h3 style = {styles.h3}>Login As Life Coach</h3>
       <Form horizontal = "true">
         <Form.Group controlId="formHorizontalId" className="mb-2">
           <Col sm={12}>
@@ -25,7 +25,7 @@ const CoachLogin = () => (
         </Form.Group>
         <Form.Group>
           <Col sm = {12}>
-            <Button size= "lg" className="mt-4 ms-4" variant="primary" type="submit"> Sign in </Button>
+            <Button style = {styles.Button} size= "lg" className="mt-4" variant="primary" type="submit"> Sign in </Button>
           </Col>
         </Form.Group>
       </Form>

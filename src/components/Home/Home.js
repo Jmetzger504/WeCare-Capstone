@@ -8,7 +8,6 @@ import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
 import { useNavigate } from "react-router-dom";
-import './Home.module.css';
 
 function Home() {
 
@@ -45,8 +44,8 @@ function Home() {
             <Card bg = "dark" className="mt-5" text = "light" style = {{'width': '25rem', 'border-radius': '2.5%'}}>
               <Card.Img className="col-lg-5 offset-4 mt-2" variant="top" src="assets\Images\LifeCoachLogIn.jpg" />
               <Card.Body>
-                <Button variant = "primary" onClick = {handleCoachLoginClick}>Login as a Coach</Button><br/>
-                <Button variant="primary" onClick = {handleCoachRegisterClick}>Register as a Coach</Button>
+                <Button style = {styles.Button} variant = "primary" onClick = {handleCoachLoginClick}>Login as a Coach</Button><br/>
+                <Button style = {styles.Button} variant="primary" onClick = {handleCoachRegisterClick}>Register as a Coach</Button>
               </Card.Body>
             </Card>
           </Col>
@@ -54,8 +53,8 @@ function Home() {
           <Card bg = "dark" className="mt-5 ms-auto" text = "light" style = {{'width': '25rem', 'border-radius': '2.5%'}}>
             <Card.Img className = "col-lg-5 offset-4 mt-2" variant="top" src="assets\Images\UserLogin.jpg" />
             <Card.Body>
-              <Button variant = "primary" onClick = {handleUserLoginClick}>Login</Button><br/>
-              <Button variant="primary" onClick = {handleUserRegisterClick}>Register</Button>
+              <Button style = {styles.Button} variant = "primary" onClick = {handleUserLoginClick}>Login</Button><br/>
+              <Button style = {styles.Button} variant="primary" onClick = {handleUserRegisterClick}>Register</Button>
             </Card.Body>
           </Card>
           </Col>
