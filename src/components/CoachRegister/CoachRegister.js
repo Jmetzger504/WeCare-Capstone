@@ -11,7 +11,8 @@ function CoachRegister() {
                                                            coachDOB: new Date(),
                                                            coachGender: '',
                                                            coachPhoneNum: '',
-                                                           coachSpec: ''});
+                                                           coachSpec: ''
+                                                          });
 
   const [coachDOBValid,setCoachDOBValid] = useState(true);
   
@@ -21,7 +22,7 @@ function CoachRegister() {
 
 
   const coachRegisterChange = (event) => {
-    let tempCredentials = Object.assign({},coachCredentials,{[event.target.name]: event.target.value})
+    let tempCredentials = Object.assign({},coachCredentials,{[event.target.name]: event.target.value});
     setCoachCredentials(tempCredentials);
   }
 
