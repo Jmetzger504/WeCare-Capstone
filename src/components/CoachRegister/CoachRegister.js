@@ -8,13 +8,17 @@ function CoachRegister() {
 
   const [coachCredentials,setCoachCredentials] = useState({coachName: '',
                                                            coachPassword: '',
-                                                           coachDOB: new Date(Date.now),
+                                                           coachDOB: new Date(),
                                                            coachGender: '',
                                                            coachPhoneNum: '',
                                                            coachSpec: ''});
 
-  const [coachNameValid,setCoachNameValid] = useState(true);
+  const [coachDOBValid,setCoachDOBValid] = useState(true);
   
+  
+  const birthday = document.getElementById('coachDOB');
+  
+
 
   const coachRegisterChange = (event) => {
     let tempCredentials = Object.assign({},coachCredentials,{[event.target.name]: event.target.value})
@@ -22,8 +26,30 @@ function CoachRegister() {
   }
 
   const handleCoachRegister = (event) => {
-   event.preventDefault();
-  
+    event.preventDefault();
+    if(validateAge())
+      console.log("Your form is completely valid! Do stuff with it lol");
+    else
+      console.log("Something isn't valid.");
+
+    
+  }
+
+   function validateAge() {
+    const dob = new Date(birthday.value).getFullYear();
+    const now = new Date().getFullYear();
+    const age = now - dob;
+    console.log(age);
+    if(age > 100 || age < 20) {
+      setCoachDOBValid(false)
+      return false;
+    }
+      
+    else {
+      setCoachDOBValid(true);
+      return true;
+    }
+      
   }
 
 
@@ -49,7 +75,7 @@ function CoachRegister() {
               </Form.Group>
             </Col>
             <Col>
-              <Form.Group className = "mb-3">
+              <Form.Group className = "mb-3" onChange = {coachRegisterChange}>
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   name = "coachPassword"
@@ -63,20 +89,24 @@ function CoachRegister() {
           </Row>
           <Row>
             <Col>
-              <Form.Group required className = "mb-3">
+              <Form.Group required className = "mb-3" onChange = {coachRegisterChange} >
                 <Form.Label>Date of Birth</Form.Label>
                 <Form.Control
                   name = "coachDOB"
                   type="date"
-                  required
+                  required  
+                  id = "coachDOB"
+                  isInvalid = {!coachDOBValid}
                 />
+                <Form.Control.Feedback type = "invalid">Must be between ages 20-100</Form.Control.Feedback>
               </Form.Group>
             </Col>
             <Col>
-              <Form.Group name = "coachGender" required className = "mb-3">  
+              <Form.Group name = "coachGender" required className = "mb-3" onChange = {coachRegisterChange}>  
                 <Form.Label>Gender</Form.Label><br/>
                 <Form.Check
                   name = "coachGender"
+                  value = "M"
                   inline
                   type="radio"
                   label="Male"
@@ -95,8 +125,8 @@ function CoachRegister() {
           </Row>
           <Row>
             <Col>
-              <Form.Group className = "mb-3">
-                <Form.Label>Mobile Number</Form.Label>
+              <Form.Group className = "mb-3" onChange = {coachRegisterChange}>
+                <Form.Label>Mobile Number (###-###-###)</Form.Label>
                 <Form.Control 
                   name = "coachPhoneNum" 
                   type = "tel"
@@ -106,7 +136,7 @@ function CoachRegister() {
               </Form.Group>
             </Col>
             <Col>
-              <Form.Group className = "mb-3">
+              <Form.Group className = "mb-3" onChange = {coachRegisterChange}>
                 <Form.Label>Speciality</Form.Label>
                 <Form.Control 
                 name = "coachSpec" 
