@@ -2,23 +2,32 @@ import axios from 'axios';
 
 export function userLoginAction(data) {
     return dispatch => {
-        axios.get('http://localhost:4000/users')
+        axios.get('http://localhost:8008/users')
         .then((response) => {
             let value = response.data
-            let result = value.find(val => val.id  === data.id && val.password === data.password)
-            if(result)
+            console.log(value);
+            console.log(data);
+            let result = value.find(val => val.userId  === data.id && val.userPassword === data.password)
+            if(result) {
+                console.log("user found!");
                 dispatch(loginMe(true,result.name));
-            else
-                dispatch(loginMe(false))
+            }
+                
+            else {
+                console.log("user not found.");
+                dispatch(loginMe(false));
+            }
+                
         });
     }
 }
 
-export function loginMe(isAuthenticated,username) {
+export function loginMe(isAuthenticated,username,id) {
     return {
         type: 'LOGIN',
         isAuthenticated: isAuthenticated,
-        username: username
+        username: username,
+        id: id
     }
 }
 

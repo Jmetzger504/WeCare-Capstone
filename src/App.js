@@ -7,6 +7,7 @@ import UserLogin from './components/UserLogin/UserLogin'
 import UserRegister from './components/UserRegister/UserRegister'
 import CoachLogin from './components/CoachLogin/CoachLogin'
 import CoachRegister from './components/CoachRegister/CoachRegister'
+import UserHome from './components/UserHome/UserHome'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path = "userregister" element = {<UserRegister/>} />
         <Route path = "/coachlogin" element = {<CoachLogin/>} />
         <Route path = "coachregister" element = {<CoachRegister/>} />
+        <Route path = "/userHome" element =  {<UserHome/>}></Route>
       </Routes>
     </BrowserRouter>
   );
