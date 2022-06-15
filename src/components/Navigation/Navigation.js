@@ -4,10 +4,12 @@ import { Navbar,Nav,NavDropdown,Container } from 'react-bootstrap';
 import { IconContext } from 'react-icons';
 import {BsTelephoneFill} from "react-icons/bs"
 import { useEffect } from 'react';
+import { store } from '../../stores/store';
 import './Navigation.css';
 
 const Navigation = () => {
   
+  const state = store.getState();
   
   return  (
     <Navbar bg="dark" expand="lg" variant="dark">
@@ -16,8 +18,13 @@ const Navigation = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className = "justify-content-end">
         <Nav>
-          <Nav.Link to = "/" className = "me-3 navlink">Profile</Nav.Link>
-          <Nav.Link to = "/" className = "me-3 navlink">My Appointments</Nav.Link>
+          {state.user.isAuthenticated ?
+           <Nav.Link href = "/home" className = "me-3 navlink">Logout</Nav.Link> :
+           <Nav.Link href = "/" className = "me-3 navlink">Login</Nav.Link>
+          }
+          
+          <Nav.Link href = "/" className = "me-3 navlink">Profile</Nav.Link>
+          <Nav.Link href = "/" className = "me-3 navlink">My Appointments</Nav.Link>
           <IconContext.Provider value={{ color: "white"}}>
             <Navbar.Brand >
               <BsTelephoneFill/>

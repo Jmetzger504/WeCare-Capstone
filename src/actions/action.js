@@ -9,8 +9,9 @@ export function userLoginAction(data) {
             console.log(data);
             let result = value.find(val => val.userId  === data.id && val.userPassword === data.password)
             if(result) {
+                console.log(result);
                 console.log("user found!");
-                dispatch(loginMe(true,result.name));
+                dispatch(loginMe(true,result.name,result.id));
             }
                 
             else {

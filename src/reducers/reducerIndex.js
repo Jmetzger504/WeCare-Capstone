@@ -1,10 +1,10 @@
 const initState = {
     id: 0,
     isAuthenticated: false,
-    userName: ""
+    username: ""
 }
 
-export const login = (state = initState, action) => {
+export const userLogin = (state = initState, action) => {
     switch(action.type) {
         
         case 'LOGIN':
@@ -23,3 +23,4 @@ export const login = (state = initState, action) => {
             return state;
     }
 }
+
