@@ -15,7 +15,7 @@ function Navigation() {
       <Navbar.Brand href="#home">WeCare</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className = "justify-content-end">
-        <Nav className = "justify-content-end">
+        <Nav>
           <Nav.Link to = "/" className = "me-3 navlink">Profile</Nav.Link>
           <Nav.Link to = "/" className = "me-3 navlink">My Appointments</Nav.Link>
           <IconContext.Provider value={{ color: "white"}}>
