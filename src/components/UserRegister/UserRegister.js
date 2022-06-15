@@ -29,12 +29,23 @@ function UserRegister() {
     setUserCredentials(tempCredentials);
   }
 
+  const userRegisterChangeNumber = (event) => {
+    try {
+      let number = parseInt(event.target.value);
+      let tempCredentials = Object.assign({},userCredentials,{[event.target.name]: number});
+      setUserCredentials(tempCredentials);
+    }
+    catch(err) {console.log(err)}
+    
+  }
+
   const handleUserRegister = (event) => {
     event.preventDefault();
     if(validateAge())
       console.log("Form is fully validated!");
     else
       console.log("The date isn't validated yet.");
+    console.log(userCredentials);
   }
 
   function validateAge() {
@@ -89,13 +100,13 @@ function UserRegister() {
             </Row>
             <Row>
               <Col>
-                <Form.Group className = "mb-3" onChange = {userRegisterChange}>
-                  <Form.Label>Mobile Number (###-###-####)</Form.Label>
+                <Form.Group className = "mb-3" onChange = {userRegisterChangeNumber}>
+                  <Form.Label>Mobile Number (No hyphens)</Form.Label>
                   <Form.Control
                     name = "userPhoneNum"
-                    type = "text"
+                    type = "number"
                     required
-                    pattern = "[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                    pattern = "[0-9]{10}"
                   />
                 </Form.Group>
               </Col>
@@ -148,11 +159,11 @@ function UserRegister() {
             </Row>
             <Row>
               <Col>
-                <Form.Group className = "mb-3" onChange = {userRegisterChange}>
+                <Form.Group className = "mb-3" onChange = {userRegisterChangeNumber}>
                   <Form.Label>Zip Code</Form.Label>
                   <Form.Control
                     name = "userZip"
-                    type = "number"
+                    type = "text"
                     required
                     minLength = {5}
                     maxLength = {5}

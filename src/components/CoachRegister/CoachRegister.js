@@ -127,12 +127,12 @@ function CoachRegister() {
           <Row>
             <Col>
               <Form.Group className = "mb-3" onChange = {coachRegisterChange}>
-                <Form.Label>Mobile Number (###-###-###)</Form.Label>
+                <Form.Label>Mobile Number (No hyphens)</Form.Label>
                 <Form.Control 
                   name = "coachPhoneNum" 
-                  type = "tel"
+                  type = "number"
                   required
-                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                  pattern="[0-9]{10}"
                 />
               </Form.Group>
             </Col>
