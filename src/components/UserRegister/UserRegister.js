@@ -6,7 +6,7 @@ import {Form,Button,Col,Row} from "react-bootstrap"
 import { useState } from 'react';
 
 
-function UserRegister() { 
+const UserRegister = () => { 
   
   const [userCredentials,setUserCredentials] = useState({userName: '',
                                                          userPassword: '',

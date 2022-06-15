@@ -4,7 +4,7 @@ import Navigation from '../Navigation/Navigation';
 import {Form,Button,Col,Row} from "react-bootstrap"
 import styles from './CoachRegister.module.css';
 
-function CoachRegister() { 
+const CoachRegister = () => { 
 
   const [coachCredentials,setCoachCredentials] = useState({coachName: '',
                                                            coachPassword: '',

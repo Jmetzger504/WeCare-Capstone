@@ -6,7 +6,7 @@ import {BsTelephoneFill} from "react-icons/bs"
 import { useEffect } from 'react';
 import './Navigation.css';
 
-function Navigation() {
+const Navigation = () => {
   
   
   return  (

@@ -9,7 +9,7 @@ import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
 import { useNavigate } from "react-router-dom";
 
-function Home() {
+const Home = () => {
 
   useEffect(() => {
     document.body.style.background = "url('/assets/Images/cloud-2725520_960_720.jpg') no-repeat center center fixed";
