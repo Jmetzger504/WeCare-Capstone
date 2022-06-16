@@ -62,10 +62,7 @@ const UserLogin = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    isAuthenticated: state.user.isAuthenticated,
-    username: state.user.username,
-    id: state.user.id,
-    isCoach: state.user.isCoach
+    isAuthenticated: state.user.isAuthenticated
   }
 }
 
