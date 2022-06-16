@@ -16,11 +16,8 @@ const CoachRegister = () => {
 
   const [coachDOBValid,setCoachDOBValid] = useState(true);
   
-  
   const birthday = document.getElementById('coachDOB');
   
-
-
   const coachRegisterChange = (event) => {
     let tempCredentials = Object.assign({},coachCredentials,{[event.target.name]: event.target.value});
     setCoachCredentials(tempCredentials);
@@ -52,7 +49,6 @@ const CoachRegister = () => {
     }
       
   }
-
 
   return (
     <>

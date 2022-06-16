@@ -47,6 +47,7 @@ const CoachLogin = (props) => {
                   <Form.Control size="lg" name="coachPassword" className="input-lg mt-4" type="password" placeholder="Password" autoComplete='off' />
                 </Col>
               </Form.Group>
+              {state.user.loginFailed ? <h4 className = "mt-4" style = {{'color': 'red','textAlign': 'center'}}>Invalid credentials</h4> : null}
               <Form.Group className = "mb-2"> 
                 <Col sm = {12}>
                   <Button style = {styles.Button} size= "lg" className="mt-4" variant="primary" type="submit">Sign in</Button>
@@ -64,7 +65,8 @@ const CoachLogin = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    isAuthenticated: state.user.isAuthenticated
+    isAuthenticated: state.user.isAuthenticated,
+    loginFailed: state.user.loginFailed
   }
 }
 

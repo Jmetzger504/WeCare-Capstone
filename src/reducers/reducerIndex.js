@@ -2,7 +2,8 @@ const initState = {
     id: 0,
     isAuthenticated: false,
     username: "",
-    isCoach: false
+    isCoach: false,
+    loginFailed: false
 }
 
 export const Login = (state = initState, action) => {
@@ -12,6 +13,7 @@ export const Login = (state = initState, action) => {
             return {
                 ...state,
                 isAuthenticated: action.isAuthenticated,
+                loginFailed: action.loginFailed,
                 username: action.username,
                 id: action.id,
                 isCoach: action.isCoach
