@@ -19,12 +19,13 @@ const Navigation = () => {
       <Navbar.Collapse id="basic-navbar-nav" className = "justify-content-end">
         <Nav>
           {state.user.isAuthenticated ?
-           <Nav.Link href = "/home" className = "me-3 navlink">Logout</Nav.Link> :
-           <Nav.Link href = "/" className = "me-3 navlink">Login</Nav.Link>
+            <>
+              <Nav.Link href = "/home" className = "me-3 text-white">Logout</Nav.Link>
+              <Nav.Link  className = "me-3 text-white">My Profile</Nav.Link>
+              <Nav.Link  className = "me-3 text-white">My Appointments</Nav.Link>
+            </> :
+            <Nav.Link href = "/" className = "me-3 text-white">Login</Nav.Link>
           }
-          
-          <Nav.Link href = "/" className = "me-3 navlink">Profile</Nav.Link>
-          <Nav.Link href = "/" className = "me-3 navlink">My Appointments</Nav.Link>
           <IconContext.Provider value={{ color: "white"}}>
             <Navbar.Brand >
               <BsTelephoneFill/>

@@ -30,31 +30,31 @@ const UserLogin = (props) => {
   return (
     <>
     {state.user.isAuthenticated ? 
-    <Navigate to = "/userHome"/> :
-      <>
-        <Navigation/>
-        <div className = "container p-5 mt-5 bg-dark text-white" style = {{"width": "30%", "borderRadius": "2.5%"}}>
-          <img className = "ms-5" style = {styles.img} src = "assets\Images\UserLogIn.jpg"></img>
-          <h1>Login As User</h1>
-          <Form horizontal = "true" onSubmit = {handleUserLogin}>
-              <Form.Group className="mb-2" onChange = {userLoginChange}>
-                <Col sm={12}>
-                  <Form.Control size="lg" name = "userId" className="input-lg mt-4" type="number" placeholder="User Id" autoComplete='off' />
-                </Col>
-              </Form.Group>
-              <Form.Group className="mb-1" onChange = {userLoginChange}>
-                <Col sm={12}>
-                  <Form.Control size="lg" name="userPassword" className="input-lg mt-4" type="password" placeholder="Password" autoComplete='off' />
-                </Col>
-              </Form.Group>
-              <Form.Group className = "mb-2"> 
-                <Col sm = {12}>
-                  <Button style = {styles.Button} size= "lg" className="mt-4" variant="primary" type="submit">Sign in</Button>
-                </Col>
-              </Form.Group>
-            </Form>
-        </div>
-      </>
+      <Navigate to = "/userHome"/> :
+        <>
+          <Navigation/>
+          <div className = "container p-5 mt-5 bg-dark text-white" style = {{"width": "30%", "borderRadius": "2.5%"}}>
+            <img className = "ms-5" style = {styles.img} src = "assets\Images\UserLogIn.jpg"></img>
+            <h1>Login As User</h1>
+            <Form horizontal = "true" onSubmit = {handleUserLogin}>
+                <Form.Group className="mb-2" onChange = {userLoginChange}>
+                  <Col sm={12}>
+                    <Form.Control size="lg" name = "userId" className="input-lg mt-4" type="number" placeholder="User Id" autoComplete='off' />
+                  </Col>
+                </Form.Group>
+                <Form.Group className="mb-1" onChange = {userLoginChange}>
+                  <Col sm={12}>
+                    <Form.Control size="lg" name="userPassword" className="input-lg mt-4" type="password" placeholder="Password" autoComplete='off' />
+                  </Col>
+                </Form.Group>
+                <Form.Group className = "mb-2"> 
+                  <Col sm = {12}>
+                    <Button style = {styles.Button} size= "lg" className="mt-4" variant="primary" type="submit">Sign in</Button>
+                  </Col>
+                </Form.Group>
+              </Form>
+          </div>
+        </>
       }
     </>
   );
@@ -63,7 +63,9 @@ const UserLogin = (props) => {
 const mapStateToProps = (state) => {
   return {
     isAuthenticated: state.user.isAuthenticated,
-    username: state.user.username
+    username: state.user.username,
+    id: state.user.id,
+    isCoach: state.user.isCoach
   }
 }
 

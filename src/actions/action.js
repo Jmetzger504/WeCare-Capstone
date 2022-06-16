@@ -5,17 +5,12 @@ export function userLoginAction(data) {
         axios.get('http://localhost:8008/users')
         .then((response) => {
             let value = response.data
-            console.log(value);
-            console.log(data);
             let result = value.find(val => val.userId  === data.id && val.userPassword === data.password)
             if(result) {
-                console.log(result);
-                console.log("user found!");
-                dispatch(loginMe(true,result.name,result.id));
+                dispatch(loginMe(true,result.name,result.id,false));
             }
                 
             else {
-                console.log("user not found.");
                 dispatch(loginMe(false));
             }
                 
@@ -23,12 +18,28 @@ export function userLoginAction(data) {
     }
 }
 
-export function loginMe(isAuthenticated,username,id) {
+export function coachLoginAction(data) {
+    return dispatch => {
+        axios.get('http://localhost:8008/coaches')
+        .then((response) => {
+            let value = response.data;
+            let result = value.find(val => val.coachId  === data.id && val.coachPassword === data.password)
+            if(result) {
+                dispatch(loginMe(true,result.name,result.id,true))
+            }
+            else
+                dispatch(loginMe(false));
+        })
+    }
+}
+
+export function loginMe(isAuthenticated,username,id,isCoach) {
     return {
         type: 'LOGIN',
         isAuthenticated: isAuthenticated,
         username: username,
-        id: id
+        id: id,
+        isCoach: isCoach
     }
 }
 
