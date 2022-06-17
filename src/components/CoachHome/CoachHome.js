@@ -21,8 +21,4 @@ const CoachHome = () => {
   );
 }
 
-CoachHome.propTypes = {};
-
-CoachHome.defaultProps = {};
-
 export default CoachHome;

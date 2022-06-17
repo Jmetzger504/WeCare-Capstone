@@ -8,7 +8,11 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { store } from '../../stores/store';
 import {userRegisterAction} from '../../actions/action'
+import { Navigate } from 'react-router';
+
 const UserRegister = (props) => { 
+
+  const state = store.getState();
 
   useEffect(() => {
     document.body.style.background = "url('/assets/Images/cloud-2725520_960_720.jpg') no-repeat center center fixed";
@@ -72,155 +76,161 @@ const UserRegister = (props) => {
       
   }
 
+  useEffect(() => {}, [state.user.isAuthenticated])
+
   return (
     <>
-      <Navigation/>
-      <div className = "container p-5 mt-5 bg-dark text-white" style = {{"width": "45%", "borderRadius": "2.5%"}}>
-          <img src = "assets\Images\UserLogIn.jpg"></img>
-          <h1>User Profile</h1>
-          <Form horizontal="true" className = "mt-3" onSubmit = {handleUserRegister}>
-            <Row>
-              <Col>
-                <Form.Group className="mb-3" onChange = {userRegisterChange}>
-                  <Form.Label>Name</Form.Label>
-                  <Form.Control
-                    name = "userName"
-                    required 
-                    type = "text"
-                    minLength = {2}
-                    maxLength = {50}
-                  />
-                </Form.Group>
-              </Col>
-              <Col>
-                <Form.Group className = "mb-3" onChange = {userRegisterChange}>
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control 
-                    name = "userPassword" 
-                    required 
-                    type = "password"
-                    minLength = {5}
-                    maxLength = {10}
-                  />
-                </Form.Group>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Form.Group className = "mb-3" onChange = {userRegisterChangeNumber}>
-                  <Form.Label>Mobile Number (No hyphens)</Form.Label>
-                  <Form.Control
-                    name = "userPhoneNum"
-                    type = "number"
-                    required
-                    pattern = "[0-9]{10}"
-                  />
-                </Form.Group>
-              </Col>
-              <Col>
-                <Form.Group className = "mb-3" onChange = {userRegisterChange}>
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control 
-                    name = "userEmail"
-                    type = "email"
-                    required
-                  />
-                </Form.Group>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Form.Group className = "mb-3" onChange = {userRegisterChange}>
-                  <Form.Label>Date of Birth</Form.Label>
-                  <Form.Control
-                    name = "userDOB"
-                    type = "date"
-                    id = "userDOB"
-                    required
-                    isInvalid = {!userDOBValid}
-                  />
-                  <Form.Control.Feedback type = "invalid">Must be between ages 20-100</Form.Control.Feedback>
-                </Form.Group>
-              </Col>
-              <Col>
-                <Form.Group name = "userGender" className = "mb-3" onChange = {userRegisterChange}>
-                  <Form.Label>Gender</Form.Label><br/>
-                  <Form.Check 
-                    required
-                    name = "userGender"
-                    value = "M"
-                    inline 
-                    type="radio" 
-                    label="Male"
-                  />
-                  <Form.Check 
-                    required 
-                    name = "userGender" 
-                    value = "F" 
-                    inline 
-                    type="radio" 
-                    label="Female"
-                  />
-                </Form.Group>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Form.Group className = "mb-3" onChange = {userRegisterChangeNumber}>
-                  <Form.Label>Zip Code</Form.Label>
-                  <Form.Control
-                    name = "userZip"
-                    type = "text"
-                    required
-                    minLength = {5}
-                    maxLength = {5}
-                  />
-                </Form.Group>
-              </Col>
-              <Col>
-                <Form.Group className = "mb-3" onChange = {userRegisterChange}>
-                  <Form.Label>City</Form.Label>
-                  <Form.Control
-                    name = "userCity" 
-                    type = "text"
-                    required
-                    minLength = {6}
-                    maxLength = {20}
-                  />
-                </Form.Group>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Form.Group className = "mb-3" onChange = {userRegisterChange}>
-                  <Form.Label>State</Form.Label>
-                  <Form.Control 
-                    name = "userState"
-                    type = "text"
-                    minLength = {6}
-                    maxLength = {20}
-                  />
-                </Form.Group>
-              </Col>
-              <Col>
-                <Form.Group className = "mb-3" onChange = {userRegisterChange}>
-                  <Form.Label>Country</Form.Label>
-                  <Form.Control 
-                    name = "userCountry"
-                    type = "text"
-                    minLength = {6}
-                    maxLength = {20}
-                  />
-                </Form.Group>
-              </Col>
-            </Row>
-            <Row>
-                <Form.Group className = "mb-3" onChange = {userRegisterChange}>
-                  <Button type = "submit">Register</Button>
-                </Form.Group>
-              </Row>
-          </Form>
-        </div>
+      {state.user.isAuthenticated ? <Navigate to = "/userHome"/> :
+        <>
+          <Navigation/>
+          <div className = "container p-5 mt-5 bg-dark text-white" style = {{"width": "45%", "borderRadius": "2.5%"}}>
+              <img src = "assets\Images\UserLogIn.jpg"></img>
+              <h1>User Profile</h1>
+              <Form horizontal="true" className = "mt-3" onSubmit = {handleUserRegister}>
+                <Row>
+                  <Col>
+                    <Form.Group className="mb-3" onChange = {userRegisterChange}>
+                      <Form.Label>Name</Form.Label>
+                      <Form.Control
+                        name = "userName"
+                        required 
+                        type = "text"
+                        minLength = {2}
+                        maxLength = {50}
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col>
+                    <Form.Group className = "mb-3" onChange = {userRegisterChange}>
+                      <Form.Label>Password</Form.Label>
+                      <Form.Control 
+                        name = "userPassword" 
+                        required 
+                        type = "password"
+                        minLength = {5}
+                        maxLength = {10}
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <Form.Group className = "mb-3" onChange = {userRegisterChangeNumber}>
+                      <Form.Label>Mobile Number (No hyphens)</Form.Label>
+                      <Form.Control
+                        name = "userPhoneNum"
+                        type = "number"
+                        required
+                        pattern = "[0-9]{10}"
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col>
+                    <Form.Group className = "mb-3" onChange = {userRegisterChange}>
+                      <Form.Label>Email</Form.Label>
+                      <Form.Control 
+                        name = "userEmail"
+                        type = "email"
+                        required
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <Form.Group className = "mb-3" onChange = {userRegisterChange}>
+                      <Form.Label>Date of Birth</Form.Label>
+                      <Form.Control
+                        name = "userDOB"
+                        type = "date"
+                        id = "userDOB"
+                        required
+                        isInvalid = {!userDOBValid}
+                      />
+                      <Form.Control.Feedback type = "invalid">Must be between ages 20-100</Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                  <Col>
+                    <Form.Group name = "userGender" className = "mb-3" onChange = {userRegisterChange}>
+                      <Form.Label>Gender</Form.Label><br/>
+                      <Form.Check 
+                        required
+                        name = "userGender"
+                        value = "M"
+                        inline 
+                        type="radio" 
+                        label="Male"
+                      />
+                      <Form.Check 
+                        required 
+                        name = "userGender" 
+                        value = "F" 
+                        inline 
+                        type="radio" 
+                        label="Female"
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <Form.Group className = "mb-3" onChange = {userRegisterChangeNumber}>
+                      <Form.Label>Zip Code</Form.Label>
+                      <Form.Control
+                        name = "userZip"
+                        type = "text"
+                        required
+                        minLength = {5}
+                        maxLength = {5}
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col>
+                    <Form.Group className = "mb-3" onChange = {userRegisterChange}>
+                      <Form.Label>City</Form.Label>
+                      <Form.Control
+                        name = "userCity" 
+                        type = "text"
+                        required
+                        minLength = {6}
+                        maxLength = {20}
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <Form.Group className = "mb-3" onChange = {userRegisterChange}>
+                      <Form.Label>State</Form.Label>
+                      <Form.Control 
+                        name = "userState"
+                        type = "text"
+                        minLength = {6}
+                        maxLength = {20}
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col>
+                    <Form.Group className = "mb-3" onChange = {userRegisterChange}>
+                      <Form.Label>Country</Form.Label>
+                      <Form.Control 
+                        name = "userCountry"
+                        type = "text"
+                        minLength = {6}
+                        maxLength = {20}
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
+                <Row>
+                    <Form.Group className = "mb-3" onChange = {userRegisterChange}>
+                      <Button type = "submit">Register</Button>
+                    </Form.Group>
+                  </Row>
+              </Form>
+            </div>
+        </>
+      }
     </>
   );
 

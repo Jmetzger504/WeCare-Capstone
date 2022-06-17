@@ -2,16 +2,17 @@ import axios from 'axios';
 
 export function userRegisterAction(data) {
     return dispatch => {
-        let newUser = { "name":data.userName,
-                        "password": data.userPassword,
-                        "gender":data.userGender,
-                        "dateOfBirth":data.userDOB,
-                        "email": data.userEmail,
-                        "mobileNumber": data.userPhoneNum,
-                        "pinCode": data.userZip,
-                        "city": data.userCity,
-                        "state": data.userState,
-                        "country": data.userCountry
+        let newUser = { 
+            "name":data.userName,
+            "password": data.userPassword,
+            "gender":data.userGender,
+            "dateOfBirth":data.userDOB,
+            "email": data.userEmail,
+            "mobileNumber": data.userPhoneNum,
+            "pinCode": data.userZip,
+            "city": data.userCity,
+            "state": data.userState,
+            "country": data.userCountry
         }
         console.log("userRegisterAction newUser: ",newUser);
         axios(`http://localhost:8008/users`, {
@@ -27,19 +28,53 @@ export function userRegisterAction(data) {
     }
 }
 
+export function coachRegisterAction(data) {
+    return dispatch => {
+        let newCoach = {
+            "name": data.coachName,
+            "password": data.coachPassword,
+            "gender": data.coachGender,
+            "dateOfBirth": data.coachDOB,
+            "mobileNumber": data.coachPhoneNum,
+            "speciality": data.coachSpec
+        }
+        console.log("coachRegisterAction newCoach: ",newCoach);
+        axios(`http://localhost:8008/coaches`, {
+            method: 'POST',
+            crossdomain: true,
+            data: newCoach,
+            headers: {
+                "Content-type": "application/json"
+            }
+        })
+        .then(dispatch(getNewCoachId(newCoach)))
+        .catch(err => console.log(err));
+    }
+}
+
+export function getNewCoachId(data) {
+    return dispatch => {
+        axios.get('http://localhost:8008/coaches')
+        .then((response) => {
+            let value = response.data;
+            let result = value.find(val =>  val.name === data.name &&
+                                            val.password === data.password)
+            if(result)
+                dispatch(loginMe(true,false,result.name,result.id,true));
+            else
+                dispatch(loginMe(false,true));
+        })
+    }
+}
+
 export function getNewUserId(data) {
     return dispatch => {
         axios.get('http://localhost:8008/users')
         .then((response) => {
-            console.log("getNewUserId data: ",data);
             let value = response.data;
-            console.log("getNewUserId value: ",value);
             //Should be enough credentials to reliably verify the new user.
             let result = value.find(val =>  val.name === data.name &&
-                                            val.password === data.password &&
-                                            val.gender === data.gender &&
-                                            val.dateOfBirth === data.dateOfBirth &&
-                                            val.email === data.email)
+                                            val.password === data.password)
             if(result)
                 dispatch(loginMe(true,false,result.name,result.id,false));
             else
