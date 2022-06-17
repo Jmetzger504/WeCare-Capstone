@@ -4,9 +4,16 @@ import styles from './UserRegister.module.css';
 import Navigation from '../Navigation/Navigation';
 import {Form,Button,Col,Row} from "react-bootstrap"
 import { useState } from 'react';
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { store } from '../../stores/store';
+import {userRegisterAction} from '../../actions/action'
+const UserRegister = (props) => { 
 
-
-const UserRegister = () => { 
+  useEffect(() => {
+    document.body.style.background = "url('/assets/Images/cloud-2725520_960_720.jpg') no-repeat center center fixed";
+    document.body.style.backgroundSize = "cover";
+  },[])
   
   const [userCredentials,setUserCredentials] = useState({userName: '',
                                                          userPassword: '',
@@ -42,7 +49,7 @@ const UserRegister = () => {
   const handleUserRegister = (event) => {
     event.preventDefault();
     if(validateAge())
-      console.log("Form is fully validated!");
+      props.register(userCredentials);
     else
       console.log("The date isn't validated yet.");
     console.log(userCredentials);
@@ -68,7 +75,7 @@ const UserRegister = () => {
   return (
     <>
       <Navigation/>
-      <div className = "container p-5 mt-5 bg-dark text-white" style = {{"width": "45%", "border-radius": "2.5%"}}>
+      <div className = "container p-5 mt-5 bg-dark text-white" style = {{"width": "45%", "borderRadius": "2.5%"}}>
           <img src = "assets\Images\UserLogIn.jpg"></img>
           <h1>User Profile</h1>
           <Form horizontal="true" className = "mt-3" onSubmit = {handleUserRegister}>
@@ -219,4 +226,16 @@ const UserRegister = () => {
 
 }
 
-export default UserRegister;
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.user.isAuthenticated
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    register: (data) => dispatch(userRegisterAction(data))
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(UserRegister);

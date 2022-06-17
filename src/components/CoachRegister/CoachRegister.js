@@ -6,6 +6,11 @@ import styles from './CoachRegister.module.css';
 
 const CoachRegister = () => { 
 
+  useEffect(() => {
+    document.body.style.background = "url('/assets/Images/cloud-2725520_960_720.jpg') no-repeat center center fixed";
+    document.body.style.backgroundSize = "cover";
+  },[])
+
   const [coachCredentials,setCoachCredentials] = useState({coachName: '',
                                                            coachPassword: '',
                                                            coachDOB: new Date(),

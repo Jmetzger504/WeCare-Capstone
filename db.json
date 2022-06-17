@@ -25,6 +25,19 @@
       "state": "Kerala",
       "country": "India",
       "id": 2
+    },
+    {
+      "name": "Julian ",
+      "password": "myPassword",
+      "gender": "M",
+      "dateOfBirth": "1995-06-23",
+      "email": "jmetzger@gmail.com",
+      "mobileNumber": 5046153122,
+      "pinCode": 70005,
+      "city": "Metairie",
+      "state": "Louisiana",
+      "country": "United States",
+      "id": 3
     }
   ],
   "coaches": [

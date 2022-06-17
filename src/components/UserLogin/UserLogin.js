@@ -11,6 +11,11 @@ import { Navigate } from 'react-router';
 
 const UserLogin = (props) => {
 
+  useEffect(() => {
+    document.body.style.background = "url('/assets/Images/cloud-2725520_960_720.jpg') no-repeat center center fixed";
+    document.body.style.backgroundSize = "cover";
+  },[])
+
   const [userCredentials,setUserCredentials] = useState({userId: 0, userPassword: 0})
   const state = store.getState();
 

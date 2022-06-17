@@ -12,6 +12,11 @@ import { coachLoginAction } from '../../actions/action';
 
 const CoachLogin = (props) => {
 
+  useEffect(() => {
+    document.body.style.background = "url('/assets/Images/cloud-2725520_960_720.jpg') no-repeat center center fixed";
+    document.body.style.backgroundSize = "cover";
+  },[])
+
   const [coachCredentials,setCoachCredentials] = useState({coachId: 0, coachPassword: ''})
   const state = store.getState();
 
