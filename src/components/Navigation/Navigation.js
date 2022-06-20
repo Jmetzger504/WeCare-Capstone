@@ -5,6 +5,7 @@ import { IconContext } from 'react-icons';
 import {BsTelephoneFill} from "react-icons/bs"
 import { useEffect } from 'react';
 import { store } from '../../stores/store';
+import {NavLink} from 'react-router-dom'
 import './Navigation.css';
 
 const Navigation = () => {
@@ -21,8 +22,8 @@ const Navigation = () => {
           {state.user.isAuthenticated ?
             <>
               <Nav.Link href = "/home" className = "me-3 text-white">Logout</Nav.Link>
-              <Nav.Link  className = "me-3 text-white">My Profile</Nav.Link>
-              <Nav.Link  className = "me-3 text-white">My Appointments</Nav.Link>
+              <NavLink to = {state.user.isCoach ? "/coachProfile" : "/userProfile"}  className = "me-3 text-white">My Profile</NavLink>
+              <NavLink to = {state.user.isCoach ? "/coachHome" : "/userHome"}  className = "me-3 text-white">My Appointments</NavLink>
             </> :
             <Nav.Link href = "/" className = "me-3 text-white">Login</Nav.Link>
           }

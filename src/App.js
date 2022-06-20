@@ -9,6 +9,8 @@ import CoachLogin from './components/CoachLogin/CoachLogin'
 import CoachRegister from './components/CoachRegister/CoachRegister'
 import UserHome from './components/UserHome/UserHome'
 import CoachHome from './components/CoachHome/CoachHome'
+import CoachProfile from './components/CoachProfile/CoachProfile'
+import UserProfile from './components/UserProfile/UserProfile'
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route path = "coachregister" element = {<CoachRegister/>} />
         <Route path = "/userHome" element =  {<UserHome/>}/>
         <Route path = "/coachHome" element = {<CoachHome/>}/>
+        <Route path = "/coachProfile" element = {<CoachProfile/>}/>
+        <Route path = "/userProfile" element = {<UserProfile/>}/>   
       </Routes>
     </BrowserRouter>
   );
