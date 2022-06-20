@@ -24,8 +24,8 @@ const CoachHome = () => {
       {myBookings.length > 0 ? 
       <Bookings/> :
       <div className = "container p-3 mt-5"
-        style = {{"width": "25%", "borderRadius": "2.5%", "textAlign": "center"}}>
-          <img src = "assets\Images\Notepad_icon.svg.png"/><br/>
+        style = {{"width": "25%", "textAlign": "center"}}>
+        <img src = "assets\Images\Notepad_icon.svg.png"/><br/>
         <h1>No currently scheduled appointments.</h1>
       </div>
       }

@@ -125,7 +125,7 @@ export function coachLoginAction(data) {
                     let allBookings = response.data;
                     console.log(allBookings);
                     let myBookings = allBookings.filter(val => val.coachId === parseInt(data.coachId))
-                    dispatch(loginMe(true,false,result.name,result.id,true,result.gender,myBookings))
+                    dispatch(loginMe(true,false,result.name,result.id,true,result.gender,myBookings,result.mobileNumber,result.speciality,result.dateOfBirth))
                 })
                 
             }
@@ -135,7 +135,7 @@ export function coachLoginAction(data) {
     }
 }
 
-export function loginMe(isAuthenticated,loginFailed,username,id,isCoach,gender,myBookings) {
+export function loginMe(isAuthenticated,loginFailed,username,id,isCoach,gender,myBookings,mobileNumber,speciality,dateOfBirth) {
     return {
         type: 'LOGIN',
         isAuthenticated: isAuthenticated,
@@ -144,7 +144,10 @@ export function loginMe(isAuthenticated,loginFailed,username,id,isCoach,gender,m
         id: id,
         isCoach: isCoach,
         gender: gender,
-        myBookings: myBookings
+        myBookings: myBookings,
+        mobileNumber: mobileNumber,
+        speciality: speciality,
+        dateOfBirth: dateOfBirth
     }
 }
 
