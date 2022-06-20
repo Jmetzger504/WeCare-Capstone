@@ -4,6 +4,7 @@ import styles from './CoachHome.module.css';
 import Navigation from '../Navigation/Navigation';
 import { useEffect } from 'react';
 import { store } from '../../stores/store';
+import Bookings from '../Bookings/Bookings';
 
 const CoachHome = () => {
 
@@ -19,21 +20,15 @@ const CoachHome = () => {
 
   return (
     <>
-      <Navigation/>
-      {myBookings.map((myBooking) => {
-        return (
-          <div className = "container p-3 mt-5 bg-dark text-white"
-              style = {{"width": "20%", "borderRadius": "2.5%", "textAlign": "center"}}>
-            <h1>Appointment Date</h1>
-            <h2>{myBooking.appointmentDate}</h2>
-            <h3>Slot: {myBooking.slot}</h3>
-            <br/>
-            <p>Booking Id: {myBooking.id}</p>
-            <p>User Id: {myBooking.userId}</p>
-          </div>
-        )
-      })}
-      
+      <Navigation/> 
+      {myBookings.length > 0 ? 
+      <Bookings/> :
+      <div className = "container p-3 mt-5"
+        style = {{"width": "25%", "borderRadius": "2.5%", "textAlign": "center"}}>
+          <img src = "assets\Images\Notepad_icon.svg.png"/><br/>
+        <h1>No currently scheduled appointments.</h1>
+      </div>
+      }
     </>
   );
 }
