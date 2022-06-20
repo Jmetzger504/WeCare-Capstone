@@ -4,7 +4,8 @@ const initState = {
     username: "",
     isCoach: false,
     loginFailed: false,
-    gender: ""
+    gender: "",
+    myBookings: []
 }
 
 export const Login = (state = initState, action) => {
@@ -18,7 +19,8 @@ export const Login = (state = initState, action) => {
                 username: action.username,
                 id: action.id,
                 isCoach: action.isCoach,
-                gender: action.gender
+                gender: action.gender,
+                myBookings: action.myBookings
             }
         case 'LOGOUT':
             return {

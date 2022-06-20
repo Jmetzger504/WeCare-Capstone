@@ -92,7 +92,14 @@ export function userLoginAction(data) {
             console.log(value);
             let result = value.find(val => val.id  === parseInt(data.userId) && val.password === data.userPassword)
             if(result) {
-                dispatch(loginMe(true,false,result.name,result.id,false,result.gender));
+                axios.get('http://localhost:8008/bookings')
+                .then((response) => {
+                    console.log(response);
+                    let allBookings = response.data;
+                    let myBookings = allBookings.filter(val => val.userId === parseInt(data.userId))
+                    dispatch(loginMe(true,false,result.name,result.id,false,result.gender,myBookings));
+                })
+                
             }
                 
             else {
@@ -121,7 +128,7 @@ export function coachLoginAction(data) {
     }
 }
 
-export function loginMe(isAuthenticated,loginFailed,username,id,isCoach,gender) {
+export function loginMe(isAuthenticated,loginFailed,username,id,isCoach,gender,myBookings) {
     return {
         type: 'LOGIN',
         isAuthenticated: isAuthenticated,
@@ -129,7 +136,8 @@ export function loginMe(isAuthenticated,loginFailed,username,id,isCoach,gender) 
         username: username,
         id: id,
         isCoach: isCoach,
-        gender: gender
+        gender: gender,
+        myBookings: myBookings
     }
 }
 
