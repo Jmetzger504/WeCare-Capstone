@@ -60,7 +60,7 @@ export function getNewCoachId(data) {
             let result = value.find(val =>  val.name === data.name &&
                                             val.password === data.password)
             if(result)
-                dispatch(loginMe(true,false,result.name,result.id,true));
+                dispatch(loginMe(true,false,result.name,result.id,true,result.gender));
             else
                 dispatch(loginMe(false,true));
         })
@@ -76,7 +76,7 @@ export function getNewUserId(data) {
             let result = value.find(val =>  val.name === data.name &&
                                             val.password === data.password)
             if(result)
-                dispatch(loginMe(true,false,result.name,result.id,false));
+                dispatch(loginMe(true,false,result.name,result.id,false,result.gender));
             else
                 dispatch(loginMe(false,true));
         })
@@ -92,7 +92,7 @@ export function userLoginAction(data) {
             console.log(value);
             let result = value.find(val => val.id  === parseInt(data.userId) && val.password === data.userPassword)
             if(result) {
-                dispatch(loginMe(true,false,result.name,result.id,false));
+                dispatch(loginMe(true,false,result.name,result.id,false,result.gender));
             }
                 
             else {
@@ -113,7 +113,7 @@ export function coachLoginAction(data) {
             let result = value.find(val => val.id  === parseInt(data.coachId) && val.password === data.coachPassword)
             console.log(result);
             if(result) {
-                dispatch(loginMe(true,false,result.name,result.id,true))
+                dispatch(loginMe(true,false,result.name,result.id,true,result.gender))
             }
             else
                 dispatch(loginMe(false,true));
@@ -121,14 +121,15 @@ export function coachLoginAction(data) {
     }
 }
 
-export function loginMe(isAuthenticated,loginFailed,username,id,isCoach) {
+export function loginMe(isAuthenticated,loginFailed,username,id,isCoach,gender) {
     return {
         type: 'LOGIN',
         isAuthenticated: isAuthenticated,
         loginFailed: loginFailed,
         username: username,
         id: id,
-        isCoach: isCoach
+        isCoach: isCoach,
+        gender: gender
     }
 }
 

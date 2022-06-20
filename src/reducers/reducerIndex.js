@@ -3,7 +3,8 @@ const initState = {
     isAuthenticated: false,
     username: "",
     isCoach: false,
-    loginFailed: false
+    loginFailed: false,
+    gender: ""
 }
 
 export const Login = (state = initState, action) => {
@@ -16,7 +17,8 @@ export const Login = (state = initState, action) => {
                 loginFailed: action.loginFailed,
                 username: action.username,
                 id: action.id,
-                isCoach: action.isCoach
+                isCoach: action.isCoach,
+                gender: action.gender
             }
         case 'LOGOUT':
             return {
