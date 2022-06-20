@@ -38,7 +38,7 @@ const CoachLogin = (props) => {
         <Navigate to = "/coachHome"/> :
         <>
           <Navigation/>
-          <div className = "container p-3 mt-5 bg-dark text-white" style = {{"width": "30%", "border-radius": "2.5%"}}>
+          <div className = "container p-3 mt-5 bg-dark text-white" style = {{"width": "30%", "borderRadius": "2.5%"}}>
             <img className = "ms-5" style = {styles.img} src = "assets\Images\LifeCoachLogIn.jpg"></img>
             <h1 style = {styles.h3}>Login As Life Coach</h1>
             <Form horizontal = "true" onSubmit = {handleCoachLogin}>
