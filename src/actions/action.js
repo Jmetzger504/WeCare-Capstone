@@ -87,17 +87,16 @@ export function userLoginAction(data) {
     return dispatch => {
         axios.get('http://localhost:8008/users')
         .then((response) => {
-            console.log(data);
             let value = response.data
-            console.log(value);
             let result = value.find(val => val.id  === parseInt(data.userId) && val.password === data.userPassword)
             if(result) {
                 axios.get('http://localhost:8008/bookings')
                 .then((response) => {
-                    console.log(response);
                     let allBookings = response.data;
                     let myBookings = allBookings.filter(val => val.userId === parseInt(data.userId))
-                    dispatch(loginMe(true,false,result.name,result.id,false,result.gender,myBookings));
+                    dispatch(loginMe(true,false,result.name,result.id,false,result.gender,
+                                myBookings,result.mobileNumber,"",result.dateOfBirth,
+                                result.city,result.state,result.country,result.pincode,result.email));
                 })
                 
             }
@@ -135,7 +134,7 @@ export function coachLoginAction(data) {
     }
 }
 
-export function loginMe(isAuthenticated,loginFailed,username,id,isCoach,gender,myBookings,mobileNumber,speciality,dateOfBirth) {
+export function loginMe(isAuthenticated,loginFailed,username,id,isCoach,gender,myBookings,mobileNumber,speciality,dateOfBirth,city,state,country,pinCode,email) {
     return {
         type: 'LOGIN',
         isAuthenticated: isAuthenticated,
@@ -147,7 +146,12 @@ export function loginMe(isAuthenticated,loginFailed,username,id,isCoach,gender,m
         myBookings: myBookings,
         mobileNumber: mobileNumber,
         speciality: speciality,
-        dateOfBirth: dateOfBirth
+        dateOfBirth: dateOfBirth,
+        city: city,
+        state: state,
+        country: country,
+        pinCode: pinCode,
+        email: email
     }
 }
 

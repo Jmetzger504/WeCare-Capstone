@@ -7,7 +7,13 @@ const initState = {
     gender: "",
     myBookings: [],
     mobileNumber: 0,
-    speciality: ""
+    speciality: "",
+    dateOfBirth: "",
+    city: "",
+    state: "",
+    country: "",
+    pinCode: 0,
+    email: ""
 }
 
 export const Login = (state = initState, action) => {
@@ -25,7 +31,12 @@ export const Login = (state = initState, action) => {
                 myBookings: action.myBookings,
                 mobileNumber: action.mobileNumber,
                 speciality: action.speciality,
-                dateOfBirth: action.dateOfBirth
+                dateOfBirth: action.dateOfBirth,
+                city: action.city,
+                state: action.state,
+                country: action.country,
+                pinCode: action.pinCode,
+                email: action.email
             }
         case 'LOGOUT':
             return {
