@@ -120,7 +120,14 @@ export function coachLoginAction(data) {
             let result = value.find(val => val.id  === parseInt(data.coachId) && val.password === data.coachPassword)
             console.log(result);
             if(result) {
-                dispatch(loginMe(true,false,result.name,result.id,true,result.gender))
+                axios.get('http://localhost:8008/bookings')
+                .then((response) => {
+                    let allBookings = response.data;
+                    console.log(allBookings);
+                    let myBookings = allBookings.filter(val => val.coachId === parseInt(data.coachId))
+                    dispatch(loginMe(true,false,result.name,result.id,true,result.gender,myBookings))
+                })
+                
             }
             else
                 dispatch(loginMe(false,true));
