@@ -22,8 +22,7 @@ const UserProfile = () => {
         </Col>
         <Col>
           <h1>{state.user.username}</h1>
-          <br/>
-          <h6>Date of Birth: {state.user.dateOfBirth}</h6>
+          <h6 className = "mt-3">Date of Birth: {state.user.dateOfBirth}</h6>
           <h6>Email: {state.user.email}</h6>
           <h6>Mobile No: {state.user.mobileNumber}</h6>
           <h6>Address: {state.user.city}, {state.user.state}, {state.user.country}</h6>
