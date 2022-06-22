@@ -89,16 +89,10 @@ export function userLoginAction(data) {
         .then((response) => {
             let value = response.data
             let result = value.find(val => val.id  === parseInt(data.userId) && val.password === data.userPassword)
-            if(result) {
-                axios.get('http://localhost:8008/bookings')
-                .then((response) => {
-                    let allBookings = response.data;
-                    let myBookings = allBookings.filter(val => val.userId === parseInt(data.userId))
-                    dispatch(loginMe(true,false,result.name,result.id,false,result.gender,
-                                myBookings,result.mobileNumber,"",result.dateOfBirth,
-                                result.city,result.state,result.country,result.pincode,result.email));
-                })
-                
+            if(result) {   
+                dispatch(loginMe(true,false,result.name,result.id,false,result.gender,
+                                [],result.mobileNumber,"",result.dateOfBirth,
+                                result.city,result.state,result.country,result.pincode,result.email));   
             }
                 
             else {

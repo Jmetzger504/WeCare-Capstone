@@ -118,6 +118,7 @@
       "id": 3
     },
     {
+      "appointmentDate": "2022-06-29",
       "coachId": 4,
       "userId": 1,
       "slot": "9 AM to 10 AM",
@@ -147,7 +148,7 @@
     {
       "appointmentDate": "2022-06-23",
       "coachId": 3,
-      "userId": 0,
+      "userId": 3,
       "slot": "9 AM to 10 AM",
       "id": 8
     }

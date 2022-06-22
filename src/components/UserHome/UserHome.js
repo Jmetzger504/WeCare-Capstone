@@ -96,11 +96,16 @@ const UserHome = () => {
   }
 
   if(appointmentSet) {
-    return <div className = "container bg-dark mt-5 text-white">
-      <h5>Your appointment is scheduled!</h5>
-      <h6>View your appointments under My Appointments</h6>
-      <Button onClick = {resetPage}>Go Back</Button>
-    </div>
+    return( 
+      <>
+      <Navigation/>
+      <div className = "container bg-dark mt-5 text-white">
+        <h5>Your appointment is scheduled!</h5>
+        <h6>View your appointments under My Appointments</h6>
+        <Button onClick = {resetPage}>Go Back</Button>
+      </div>
+    </>
+    )
   }
 
   if(coachChosen) {
