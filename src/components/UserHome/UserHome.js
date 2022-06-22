@@ -30,7 +30,7 @@ const UserHome = () => {
     })
   },[]);
 
-  useEffect(() => {},[coachId]);
+  useEffect(() => {},[coachId,coachChosen]);
 
   const getAppointment = (id) => {
     setCoachChosen(true);
@@ -59,7 +59,7 @@ const UserHome = () => {
     // }
     else {
       setAppDateValid(true);
-      let appointmentDate = appDatetime.getFullYear() + "-0" + (appDatetime.getMonth()+1) + "-" + (appDatetime.getDate()+1);
+      let appointmentDate = appDatetime.getFullYear() + "-" + (appDatetime.getMonth()+1) + "-" + (appDatetime.getDate()+1);
       return appointmentDate;
     }
       
@@ -86,8 +86,21 @@ const UserHome = () => {
     .catch(err => console.log(err));
   }
 
+  const resetPage = () => {
+    setAppointmentSet(false);
+    setCoachChosen(false);
+  } 
+
   if(isLoading) {
     return <div className = "container">Loading....</div>
+  }
+
+  if(appointmentSet) {
+    return <div className = "container bg-dark mt-5 text-white">
+      <h5>Your appointment is scheduled!</h5>
+      <h6>View your appointments under My Appointments</h6>
+      <Button onClick = {resetPage}>Go Back</Button>
+    </div>
   }
 
   if(coachChosen) {

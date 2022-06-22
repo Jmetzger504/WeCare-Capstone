@@ -93,24 +93,6 @@
       "mobileNumber": 5046153122,
       "speciality": "Dr. Pibbs.",
       "id": 3
-    },
-    {
-      "name": "Julian",
-      "password": "newJulian",
-      "gender": "M",
-      "dateOfBirth": "1995-06-23",
-      "mobileNumber": 5046153122,
-      "speciality": "Being lame",
-      "id": 4
-    },
-    {
-      "name": "anotherOne",
-      "password": "anotherOne",
-      "gender": "M",
-      "dateOfBirth": "1995-06-23",
-      "mobileNumber": 5041234567,
-      "speciality": "Idk man I just",
-      "id": 5
     }
   ],
   "bookings": [
@@ -134,6 +116,40 @@
       "userId": 1,
       "slot": "9 AM to 10 AM",
       "id": 3
+    },
+    {
+      "coachId": 4,
+      "userId": 1,
+      "slot": "9 AM to 10 AM",
+      "id": 4
+    },
+    {
+      "appointmentDate": "2022-06-28",
+      "coachId": 4,
+      "userId": 1,
+      "slot": "9 AM to 10 AM",
+      "id": 5
+    },
+    {
+      "appointmentDate": "2022-06-22",
+      "coachId": 3,
+      "userId": 1,
+      "slot": "9 AM to 10 AM",
+      "id": 6
+    },
+    {
+      "appointmentDate": "2022-06-28",
+      "coachId": 3,
+      "userId": 1,
+      "slot": "9 AM to 10 AM",
+      "id": 7
+    },
+    {
+      "appointmentDate": "2022-06-23",
+      "coachId": 3,
+      "userId": 0,
+      "slot": "9 AM to 10 AM",
+      "id": 8
     }
   ]
 }

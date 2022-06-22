@@ -11,6 +11,7 @@ import UserHome from './components/UserHome/UserHome'
 import CoachHome from './components/CoachHome/CoachHome'
 import CoachProfile from './components/CoachProfile/CoachProfile'
 import UserProfile from './components/UserProfile/UserProfile'
+import UserAppointments from './components/UserAppointments/UserAppointments'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path = "/coachHome" element = {<CoachHome/>}/>
         <Route path = "/coachProfile" element = {<CoachProfile/>}/>
         <Route path = "/userProfile" element = {<UserProfile/>}/>   
+        <Route path = "/userAppointments" element = {<UserAppointments/>}/>
       </Routes>
     </BrowserRouter>
   );

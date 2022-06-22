@@ -22,8 +22,9 @@ const Navigation = () => {
           {state.user.isAuthenticated ?
             <>
               <Nav.Link href = "/home" className = "me-3 text-white">Logout</Nav.Link>
+              {state.user.isCoach ? null : <NavLink to = "/userHome" className = " mt-2 me-3 text-white navlink">Home</NavLink>}
               <NavLink to = {state.user.isCoach ? "/coachProfile" : "/userProfile"}  className = " mt-2 me-3 text-white navlink">My Profile</NavLink>
-              <NavLink to = {state.user.isCoach ? "/coachHome" : "/userHome"}  className = "mt-2 me-3 text-white navlink">My Appointments</NavLink>
+              <NavLink to = {state.user.isCoach ? "/coachHome" : "/userAppointments"}  className = "mt-2 me-3 text-white navlink">My Appointments</NavLink>
             </> :
             <Nav.Link href = "/" className = "me-3 text-white">Login</Nav.Link>
           }
