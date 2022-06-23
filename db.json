@@ -97,11 +97,18 @@
   ],
   "bookings": [
     {
-      "appointmentDate": "2022-6-30",
+      "appointmentDate": "2022-6-29",
+      "slot": "9 AM to 10 AM",
+      "coachId": 1,
+      "userId": 1,
+      "id": 1
+    },
+    {
+      "appointmentDate": "2022-6-22",
       "coachId": 1,
       "userId": 1,
       "slot": "9 AM to 10 AM",
-      "id": 1
+      "id": 2
     }
   ]
 }
