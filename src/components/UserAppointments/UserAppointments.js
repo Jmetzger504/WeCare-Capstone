@@ -29,10 +29,16 @@ const UserAppointments = () => {
         setLoading(false);
       }
     })
-  },[]);
+  },[isLoading]);
 
-  //Re-renders after axios request completes.
-  useEffect(() => {},[isLoading]);
+
+  const cancelAppointment = (appointmentId) => {
+    axios.delete('http://localhost:8008/bookings/' + appointmentId)
+    .then(() => {
+      setIsCancelling(true);
+      setShowCancelModal(false);
+    });
+  }
 
   if(isLoading) {
     return (
@@ -57,17 +63,18 @@ const UserAppointments = () => {
                 <h2>{myBooking.appointmentDate}</h2>
                 <h3 className = "mb-5">Slot: {myBooking.slot}</h3>
                 <Button variant = "info" className = "mt-5 mb-3 text-white">Reschedule your Appointment</Button>
-                <Button
+                <Button 
                   variant = "danger" 
-                  className = "mb-3"
-                  data-toggle="modal"
-                  onClick = {() => setShowCancelModal(true)}>Cancel your Appointment
+                  className = "mb-3" 
+                  data-toggle="modal" 
+                  onClick = {() => setShowCancelModal(true)}>
+                  Cancel your Appointment
                 </Button>
               </div>
               <Modal centered show={showCancelModal} onHide={() => setShowCancelModal(false)}>
-                <Modal.Body>Are you sure you need to cancel the appointment?</Modal.Body>
+                <Modal.Body closeButton>Are you sure you need to cancel the appointment?</Modal.Body>
                 <Modal.Footer>
-                  <Button className = "mx-auto" style = {{"width": "40%"}} variant="success">
+                  <Button onClick = {() => cancelAppointment(myBooking.id)} className = "mx-auto" style = {{"width": "40%"}} variant="success">
                     Yes
                   </Button>
                   <Button className = "mx-auto" style = {{"width": "40%"}} variant="danger" onClick={() => setShowCancelModal(false)}>
