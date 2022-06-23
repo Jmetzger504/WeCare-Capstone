@@ -95,5 +95,13 @@
       "id": 3
     }
   ],
-  "bookings": []
+  "bookings": [
+    {
+      "appointmentDate": "2022-6-30",
+      "coachId": 1,
+      "userId": 1,
+      "slot": "9 AM to 10 AM",
+      "id": 1
+    }
+  ]
 }

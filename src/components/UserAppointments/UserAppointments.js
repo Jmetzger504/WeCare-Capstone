@@ -32,6 +32,8 @@ const UserAppointments = () => {
   },[isLoading]);
 
 
+
+
   const cancelAppointment = (appointmentId) => {
     axios.delete('http://localhost:8008/bookings/' + appointmentId)
     .then(() => {
@@ -40,7 +42,26 @@ const UserAppointments = () => {
     });
   }
 
-  if(isLoading) {
+  const resetPage = () => {
+    setIsCancelling(false);
+    setLoading(true);
+    console.log(isLoading);
+  }
+
+  if(isCancelling) {
+    return (
+      <>
+      <Navigation/>
+        <div className = "container bg-dark mt-5 pt-1 text-white"
+          style = {{"width": "30%", "text-align": "center", "borderRadius": "3%"}}>
+          <p className = " mt-5">Your appointment was cancelled successfully.</p>
+          <Button className = "my-3" onClick = {() => resetPage()}
+            style = {{"width": "50%"}}>Go Back</Button>
+        </div>
+      </>
+    )
+  }
+  else if(isLoading) {
     return (
       <>
         <Navigation/>
