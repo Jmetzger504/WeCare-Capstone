@@ -17,10 +17,11 @@ const UserAppointments = () => {
   const [isCancelling,setIsCancelling] = useState(false);
   const [showCancelModal, setShowCancelModal] = useState(false);
   const [appDateValid,setAppDateValid] = useState(true);
+  const [appDate,setAppDate] = useState(new Date());
   const [appTime,setAppTime] = useState("");
   const [rescheduleId, setRescheduleId] = useState(0);
   const [editBooking,setEditBooking] = useState({});
-  const appDate = document.getElementById("appointmentDate");
+  //const appDate = document.getElementById("appointmentDate");
 
   //Set background and get current appointments.
   useEffect(() => {
@@ -50,8 +51,8 @@ const UserAppointments = () => {
 
   const resetPage = () => {
     setIsCancelling(false);
+    setIsRescheduling(false);
     setLoading(true);
-    console.log(isLoading);
   }
 
   const handleSubmit = (event) => {
@@ -63,7 +64,8 @@ const UserAppointments = () => {
   }
 
   const validateAppointmentDate = () => {
-    const appDatetime = new Date(appDate.value);
+    console.log("appDate: " + appDate);
+    const appDatetime = new Date(appDate);
     appDatetime.setHours(0,0,0,0);
     const now = new Date();
     now.setHours(0);
@@ -97,8 +99,7 @@ const UserAppointments = () => {
       }
     })
     .then(() => {
-      setIsRescheduling(false)
-      setLoading(true)
+      resetPage();
     })
   }
 
@@ -129,7 +130,7 @@ const UserAppointments = () => {
           <h2 style = {{"display": "inline"}}
             className = "ms-5 mt-5">Reschedule your Appointment</h2>  
           <Form className = "mt-3" onSubmit = {handleSubmit}>
-            <Form.Group>
+            <Form.Group onChange = {event => setAppDate(event.target.value)}>
               <Form.Label>Date of Appointment</Form.Label>
               <Form.Control
                 name = "appointmentDate"
